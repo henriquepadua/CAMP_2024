@@ -12,6 +12,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.camp_2024.ui.theme.Camp_2024Theme
 
 class MainActivity : ComponentActivity() {
@@ -24,7 +27,19 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                    LoginScreen()
+//                    val navController = rememberNavController()
+//                    NavHost(navController = navController, startDestination = "main"){
+//                        composable("main"){
+//                            LoginScreen()
+//                        }
+//                        composable("signIn"){
+//                            LoginScreen()
+//                        }
+//                        composable("main"){
+//
+//                        }
+//                    }
                 }
             }
         }
@@ -35,7 +50,9 @@ class MainActivity : ComponentActivity() {
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     Text(
         text = "Tela de Login",
-        modifier = modifier.fillMaxWidth().background(Color.Blue)
+        modifier = modifier
+            .fillMaxWidth()
+            .background(Color.Blue)
     )
 }
 

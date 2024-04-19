@@ -1,12 +1,14 @@
 package com.example.camp_2024
 
 import androidx.compose.foundation.background
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -19,6 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.camp_2024.ui.theme.PinkIoasys
@@ -26,6 +29,7 @@ import com.example.camp_2024.ui.theme.PinkIoasys
 @Composable
     fun LoginScreen(){
         var nameError by remember { mutableStateOf(false) } // 1
+        var visualTransformation = 0;
         var email by remember {
             mutableStateOf("")
         }
@@ -64,6 +68,8 @@ import com.example.camp_2024.ui.theme.PinkIoasys
                 value = password,
                 onValueChange = { password = it },
                 label = { Text("Digite sua senha",color =  Color.White) }
+//                visualTransformation = PasswordVisualTransformation(),
+//                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
             )
 
             Spacer(Modifier.size(16.dp))
