@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun DesafioScreen(){
     var nomeTarefa by remember { mutableStateOf("") } // Variável para armazenar o nome da tarefa atual
-    val tarefas = remember { mutableStateListOf<String>() } // Lista para armazenar as tarefas adicionadas
+    val tarefas = remember { mutableStateListOf<Pair<String, Boolean>>() }
 
     Column(
         modifier = Modifier
@@ -35,7 +35,7 @@ fun DesafioScreen(){
             TextButton(
                 onClick = {
                     if (nomeTarefa.isNotBlank()) { // Verifica se o nome da tarefa não está vazio
-                        tarefas.add(nomeTarefa) // Adiciona a nova tarefa à lista
+                        tarefas.add(nomeTarefa to false) // Adiciona a nova tarefa à lista
                         nomeTarefa = "" // Limpa o campo de entrada de texto
                     }
                 },
@@ -46,11 +46,13 @@ fun DesafioScreen(){
         }
 
         // Exibe as tarefas adicionadas na lista
-        tarefas.forEach { tarefa ->
+        tarefas.forEachIndexed { index, (tarefa, isChecked) ->
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Checkbox(
-                    checked = false, // Você pode adicionar um estado para controlar se a tarefa está concluída ou não
-                    onCheckedChange = {  },
+                    checked = isChecked,
+                    onCheckedChange = { isChecked ->
+                        tarefas[index] = tarefa to isChecked
+                    },
                     modifier = Modifier.padding(end = 8.dp)
                 )
                 Text(tarefa)
@@ -58,6 +60,7 @@ fun DesafioScreen(){
         }
     }
 }
+
 
 @Preview
 @Composable
