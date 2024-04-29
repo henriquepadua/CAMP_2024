@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.sp
 import com.example.camp_2024.ui.theme.PinkIoasys
 
 @Composable
-    fun LoginScreen() {
+    fun LoginScreen(onLoginClick: (String, String) -> Unit) {
     var email by remember { mutableStateOf("") } // 1
     var password by remember { mutableStateOf("") }
     var passwordVisibility by remember { mutableStateOf(false) }
@@ -78,5 +78,6 @@ import com.example.camp_2024.ui.theme.PinkIoasys
     @Preview
     @Composable
     fun LoginScreenPreview() {
-        LoginScreen()
+        LoginScreen(onLoginClick = {email, password->
+        })
     }
